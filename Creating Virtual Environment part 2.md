@@ -1,4 +1,3 @@
-
 # Guide to Python Environments: `requirements.txt` vs `environment.yml`
 
 Managing environments is a crucial part of Python development. This guide explains the usage, purpose, and differences between `requirements.txt` (for `pip`) and `environment.yml` (for `conda`) to help you choose the right tool for your project.
@@ -75,7 +74,36 @@ dependencies:
 
 ---
 
-## 3. **Key Differences Between `requirements.txt` and `environment.yml`**
+## 3. **Using the Environment with Jupyter**
+
+Once you have created a Conda environment, you can use it with Jupyter by following these steps:
+
+### **Install Jupyter in the Environment**
+Ensure Jupyter is installed in the Conda environment:
+```bash
+conda install -c conda-forge notebook ipykernel
+```
+
+### **Add the Environment as a Jupyter Kernel**
+Register the Conda environment as a Jupyter kernel:
+```bash
+python -m ipykernel install --user --name=your_environment_name --display-name "Python (your_environment_name)"
+```
+- Replace `your_environment_name` with the name of your Conda environment.
+- The `--display-name` is how the environment will appear in Jupyter.
+
+### **Start Jupyter Notebook**
+Launch Jupyter Notebook from the terminal:
+```bash
+jupyter notebook
+```
+
+### **Select the Environment**
+When creating a new notebook or running an existing one, select the environment from the kernel dropdown (e.g., "Python (your_environment_name)").
+
+---
+
+## 4. **Key Differences Between `requirements.txt` and `environment.yml`**
 
 | **Aspect**               | **`requirements.txt`**               | **`environment.yml`**                      |
 |--------------------------|--------------------------------------|--------------------------------------------|
@@ -88,7 +116,7 @@ dependencies:
 
 ---
 
-## 4. **Using Both `requirements.txt` and `environment.yml`**
+## 5. **Using Both `requirements.txt` and `environment.yml`**
 
 For projects requiring flexibility, you can use both files together:
 1. Use `environment.yml` to manage the primary Conda environment, including non-Python dependencies.
@@ -110,7 +138,7 @@ For projects requiring flexibility, you can use both files together:
 
 ---
 
-## 5. **Best Practices**
+## 6. **Best Practices**
 
 - **Use `environment.yml`** when working with Conda to leverage support for non-Python dependencies.
 - **Use `requirements.txt`** when working with `pip` or deploying to platforms that rely on it.
@@ -118,7 +146,49 @@ For projects requiring flexibility, you can use both files together:
 
 ---
 
-## 6. **Conclusion**
+## 7. **Common Commands**
+
+### For `requirements.txt`
+- Install dependencies:
+  ```bash
+  pip install -r requirements.txt
+  ```
+- Generate `requirements.txt`:
+  ```bash
+  pip freeze > requirements.txt
+  ```
+
+### For `environment.yml`
+- Create a Conda environment:
+  ```bash
+  conda env create -f environment.yml
+  ```
+- Update an existing environment:
+  ```bash
+  conda env update -f environment.yml
+  ```
+- Export a Conda environment:
+  ```bash
+  conda env export > environment.yml
+  ```
+
+### For Jupyter
+- Install Jupyter in the Conda environment:
+  ```bash
+  conda install -c conda-forge notebook ipykernel
+  ```
+- Add the environment as a Jupyter kernel:
+  ```bash
+  python -m ipykernel install --user --name=your_environment_name --display-name "Python (your_environment_name)"
+  ```
+- Start Jupyter Notebook:
+  ```bash
+  jupyter notebook
+  ```
+
+---
+
+## 8. **Conclusion**
 
 Choose the right file for your project:
 - **Use `requirements.txt`** for simple Python projects with `pip`.
