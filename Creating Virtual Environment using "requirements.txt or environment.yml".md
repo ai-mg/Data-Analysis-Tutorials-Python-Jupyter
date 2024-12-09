@@ -54,13 +54,16 @@ dependencies:
 ```
 
 ### **Usage**
-1. **Creating an Environment**: Use the `environment.yml` file to create a Conda environment:
+1. **Creating an Environment**: Use the `environment.yml` file to create a Conda environment called `environment_name`:
    ```bash
-   conda env create -f environment.yml
+   conda env create -n environment_name -f environment.yml
+   ```
+   ```
+   -n: flag for name; -f: flag for file 
    ```
 2. **Updating an Environment**: Update an existing environment:
    ```bash
-   conda env update -f environment.yml
+   conda env update -n environment_name -f environment.yml
    ```
 3. **Exporting the Environment**: To generate an `environment.yml` from an existing Conda environment:
    ```bash
